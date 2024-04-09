@@ -30,8 +30,8 @@ public class VideoNormal extends Video{
         System.out.println("Vídeo "+getTitulo()+" cadastrado com sucesso!");
         System.out.println("---- Cadastro de Video ----");
     }
-
+    @Override
     public void exibirVideo(){
-        System.out.println(getTitulo()+" - "+getDescricao()+" - "+getUrl());
+        System.out.println("Video Normal - "+getTitulo()+" - "+getDescricao()+" - "+getUrl()+ " - "+getVisualizacoes()+" views");
     }
 }

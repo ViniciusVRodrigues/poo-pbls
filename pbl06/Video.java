@@ -83,4 +83,8 @@ public class Video {
 
 
     }
+
+    public void exibirVideo(){
+        System.out.println(getTitulo()+" - "+getDescricao()+" - "+getUrl());
+    }
 }

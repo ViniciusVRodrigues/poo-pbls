@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         List<Canal> canais = new ArrayList<>();
-        List<VideoNormal> videos = new ArrayList<>();
+        List<Video> videos = new ArrayList<>();
         Scanner scanner = new Scanner(System.in);
         System.out.println("Bem vindo ao youtube!");
         Usuario usuario = new Usuario();
@@ -42,6 +42,9 @@ public class Main {
                     }
                     break;
                 case 4:
+                    if(usuario.getNome().isEmpty())
+                        break;
+
                     if(canal.getNome().isEmpty()){
                         //Cadastrar Canal
                         canal.cadastrarCanal(scanner);
@@ -51,10 +54,26 @@ public class Main {
                     }
                     break;
                 case 5:
-                    canal.adicionarVideoNormal(scanner);
+                    if(canal.getNome().isEmpty())
+                        break;
+
+                    System.out.println("----- Cadastro de Videos -----");
+                    System.out.println("(1) - Video Normal");
+                    System.out.println("(2) - Video Ao Vivo");
+                    System.out.println("(3) - Video Privado");
+                    System.out.println("(0) - Sair");
+                    int cadastroSelecionado = scanner.nextInt();
+                    scanner.nextLine();
+                    switch (cadastroSelecionado){
+                        case 1: canal.adicionarVideoNormal(scanner); break;
+                        case 2:canal.adicionarVideoAoVivo(scanner); break;
+                        case 3:canal.adicionarVideoPrivado(scanner); break;
+                    }
                     break;
                 case 6:
-                    canal.exibirVideosNormais();
+                    if(usuario.getNome().isEmpty())
+                        break;
+                    canal.exibirVideos();
                     break;
                 case 0:
                     fim = true;

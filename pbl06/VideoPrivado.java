@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 public class VideoPrivado extends Video{
     private List<Comentario> comentarios;
@@ -43,4 +44,21 @@ public class VideoPrivado extends Video{
         usuariosPermitidos.remove(usuario);
     }
 
+    public void cadastrarVideoPrivado(Scanner scanner){
+        System.out.println("---- Cadastro de Video Privado ----");
+        System.out.println("Digite o titulo:");
+        setTitulo(scanner.nextLine());
+        System.out.println("Digite a descrição:");
+        setDescricao(scanner.nextLine());
+        System.out.println("Digite a senha:");
+        senha = scanner.nextLine();
+        gerarUrl();
+        System.out.println("Vídeo "+getTitulo()+" cadastrado com sucesso!");
+        System.out.println("---- Cadastro de Video Privado ----");
+    }
+
+    @Override
+    public void exibirVideo(){
+        System.out.println("Video Privado - "+getTitulo()+" - "+getDescricao()+" - "+getUrl()+" - Senha: "+senha);
+    }
 }

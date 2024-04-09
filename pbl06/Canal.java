@@ -1,17 +1,13 @@
 import java.util.*;
 public class Canal {
-    private List<VideoNormal> videosNormais;
-    private List<VideoPrivado> videosPrivados;
-    private List<VideoAoVivo> videosAoVivo;
+    private List<Video> videos;
     private String nome;
     private List<Playlist> playlists;
     private List<Usuario> inscritos;
     public Canal(){
         playlists = new ArrayList<>();
         inscritos = new ArrayList<>();
-        videosNormais = new ArrayList<>();
-        videosAoVivo = new ArrayList<>();
-        videosPrivados = new ArrayList<>();
+        videos = new ArrayList<>();
         nome="";
     }
     public Canal(String nome){
@@ -35,14 +31,14 @@ public class Canal {
     public void setNome(String nome){
         this.nome = nome;
     }
-    public List<VideoNormal> getVideosNormais() {
-        return videosNormais;
+    public List<Video> getVideos() {
+        return videos;
     }
-    public void addVideoNormal(VideoNormal videoNormal){
-        videosNormais.add(videoNormal);
+    public void addVideo(VideoNormal videoNormal){
+        videos.add(videoNormal);
     }
-    public void removeVideoNormal(VideoNormal videoNormal){
-        videosNormais.remove(videoNormal);
+    public void removeVideo(VideoNormal videoNormal){
+        videos.remove(videoNormal);
     }
 
     public void addPlaylist(Playlist playlist){
@@ -70,17 +66,29 @@ public class Canal {
     }
 
     public void adicionarVideoNormal(Scanner scanner){
-        VideoNormal videoNormal = new VideoNormal();
-        videoNormal.cadastrarVideoNormal(scanner);
-        videosNormais.add(videoNormal);
+        VideoNormal video = new VideoNormal();
+        video.cadastrarVideoNormal(scanner);
+        videos.add(video);
     }
 
-    public void exibirVideosNormais(){
+    public void adicionarVideoAoVivo(Scanner scanner){
+        VideoAoVivo video = new VideoAoVivo();
+        video.cadastrarVideoAoVivo(scanner);
+        videos.add(video);
+    }
+
+    public void adicionarVideoPrivado(Scanner scanner){
+        VideoPrivado video = new VideoPrivado();
+        video.cadastrarVideoPrivado(scanner);
+        videos.add(video);
+    }
+
+    public void exibirVideos(){
         System.out.println("----- Videos do "+nome+" -----");
-        for (int i = 0; i < videosNormais.size(); i++) {
-            videosNormais.get(i).exibirVideo();
+        for (int i = 0; i < videos.size(); i++) {
+            videos.get(i).exibirVideo();
         }
-        if(videosNormais.isEmpty())
+        if(videos.isEmpty())
             System.out.println("Nenhum vídeo cadastrado!");
         System.out.println("----- Videos do "+nome+" -----");
     }
