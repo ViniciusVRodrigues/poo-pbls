@@ -11,10 +11,12 @@ public class Main {
         itensDigitais.add(new VideoDigital("Robert Kirkman","The Walking Dead"));
         itensDigitais.add(new VideoDigital("Shakespeare","Romeu e Julieta"));
         for(ItemBibliotecaDigital item : itensDigitais){
+            System.out.println(item.descricao());
             item.realizarAcao(0);
             if(item instanceof VideoDigital){
                 item.realizarAcao(1);
             }
+            System.out.println("----------");
         }
     }
 }
