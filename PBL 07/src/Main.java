@@ -11,12 +11,9 @@ public class Main {
         itensDigitais.add(new VideoDigital("Robert Kirkman","The Walking Dead"));
         itensDigitais.add(new VideoDigital("Shakespeare","Romeu e Julieta"));
         for(ItemBibliotecaDigital item : itensDigitais){
-            System.out.print(item.descricao()+" - ");
-            if(item instanceof EBook){
-                ((EBook) item).baixar();
-            }
+            item.realizarAcao(0);
             if(item instanceof VideoDigital){
-                ((VideoDigital) item).visualizar();
+                item.realizarAcao(1);
             }
         }
     }
